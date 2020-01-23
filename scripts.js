@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create a function that if a list item is double clicked it removes the list item from the DOM.
         function liDoubleClicked(e) {
-            e.target.parentNode.removeChild(e.target);
+            e.target.remove();
         }
     };
 
