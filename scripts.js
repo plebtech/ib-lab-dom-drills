@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create and array of 8 colors, add an event listener that changes the color of a heading to a random color from the array when it is double clicked.
     let headers = document.querySelectorAll('.h1, .h2, .h3, .h4, .h5, .h6');
     headers.forEach(function (h) {
-        h.addEventListener('dblclick', cellClicked);
+        h.addEventListener('dblclick', hClicked);
     });
-    function cellClicked(e) {
+    function hClicked(e) {
         randomColor(e);
     }
     let colors = ['blue', 'red', 'green', 'yellow', 'dark-grey', 'light-grey', 'purple', 'orange'];
@@ -65,9 +65,29 @@ document.addEventListener("DOMContentLoaded", function () {
         let li = document.createElement('li');
         let liText = document.createTextNode("This is list item " + listCount);
         li.appendChild(liText);
+        li.className = 'li';
         document.body.appendChild(li);
         listCount++;
+        listListen();
     }
+
+    // Using the same random color function created above, apply an event listener that when a list item is clicked once, it changes the color of the font to one fo the 8 random colors.
+
+    function listListen() {
+        let listItems = document.querySelectorAll('.li');
+        listItems.forEach(function (l) {
+            l.addEventListener('click', liClicked);
+            l.addEventListener('dblclick', liDoubleClicked);
+        });
+        function liClicked(e) {
+            randomColor(e);
+        };
+
+        // Create a function that if a list item is double clicked it removes the list item from the DOM.
+        function liDoubleClicked(e) {
+            e.target.parentNode.removeChild(e.target);
+        }
+    };
 
 })
 
