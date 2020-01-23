@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
+document.addEventListener("DOMContentLoaded", function () {
+
     let headerContainer = document.createElement('div');
     headerContainer.className = 'header-container';
     document.body.appendChild(headerContainer);
@@ -40,4 +40,18 @@ document.addEventListener("DOMContentLoaded", function() {
     headerContainer.appendChild(h6);
     h6.className = 'h6';
 
+    // Create and array of 8 colors, add an event listener that changes the color of a heading to a random color from the array when it is double clicked.
+    let headers = document.querySelectorAll('.h1, .h2, .h3, .h4, .h5, .h6');
+    headers.forEach(function (h) {
+        h.addEventListener('dblclick', cellClicked);
+    });
+    function cellClicked(e) {
+        randomColor(e);
+    }
+    let colors = ['blue', 'red', 'green', 'yellow', 'dark-grey', 'light-grey', 'purple', 'orange'];
+    function randomColor(e) {
+        e.target.style.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+
 })
+
