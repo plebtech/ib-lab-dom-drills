@@ -53,5 +53,21 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.style.color = colors[Math.floor(Math.random() * colors.length)];
     }
 
+    // Create an event listener that calls the new list item function every time the button is clicked.
+
+    let addStatus = document.querySelector('.add-list');
+    addStatus.addEventListener('click', addToList);
+
+    // In the scripts.js file, write a function that inserts a list item, have the first item say "This is list item 1" and any subsequent list item should have the number incremented by 1.
+
+    let listCount = 1;
+    function addToList() {
+        let li = document.createElement('li');
+        let liText = document.createTextNode("This is list item " + listCount);
+        li.appendChild(liText);
+        document.body.appendChild(li);
+        listCount++;
+    }
+
 })
 
